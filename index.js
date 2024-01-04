@@ -13,8 +13,7 @@ fs.readFile(`${__dirname}/dog.txt`, (err, data) => {
                 if (err) return console.log(err.message);
                 console.log('Random dog image saved to file!');
             });
-        })
-        .catch(err => {
+        }).catch(err => {
             console.log(err.message);
         })
 });
