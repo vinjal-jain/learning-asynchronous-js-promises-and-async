@@ -20,22 +20,41 @@ const writeFilePro = (file, data) => {
     })
 }
 
+const getDocPic = async ()=> {
+    try{
+    const data = await readFilePro(`${__dirname}/dog.txt`);
+    console.log(`Breed : ${data}`);
+
+   const res = await  superagent.get(`https://dog.ceo/api/breed/${data}/images/random`);
+   console.log(res.body.message);
+
+   await writeFilePro('dog-img.txt', res.body.message)
+   console.log('Random dog image saved to file!');
+}catch(err){
+cosole.log(err);
+}
+};
+getDocPic();
+
+
+/*
 readFilePro(`${__dirname}/dog.txt`).then(data => {
     console.log(`Breed : ${data}`);
 
     return superagent.get(`https://dog.ceo/api/breed/${data}/images/random`)
 })
-    .then(res => {
+ .then(res => {
         console.log(res.body.message);
 
         return writeFilePro('dog-img.txt', res.body.message)
     })
-    .then(() => {
+ .then(() => {
         console.log('Random dog image saved to file!');
     })
-    .catch(err => {
+.catch(err => {
         console.log(err.message);
     })
+*/
 
 
 
