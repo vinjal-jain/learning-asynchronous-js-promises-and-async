@@ -32,10 +32,33 @@ const getDocPic = async ()=> {
    console.log('Random dog image saved to file!');
 }catch(err){
 cosole.log(err);
+throw(err);
 }
+return '2: READY';
 };
-getDocPic();
 
+(async() => {
+   try{
+    console.log('1: Will get dog pics!!');
+    const x = await getDocPic();
+    console.log(x);
+    console.log('3: Done getting dog pics!');
+   }catch(err){
+    console.log('ERROR');
+   }
+})();
+
+/*console.log('1: Will get dog pics!!');
+getDocPic()
+.then(x => {
+    console.log(x);
+    console.log('3: Done getting dog pics!');
+
+})
+.catch(err => {
+    console.log('ERROR');
+})
+*/
 
 /*
 readFilePro(`${__dirname}/dog.txt`).then(data => {
